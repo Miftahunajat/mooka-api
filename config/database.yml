@@ -1,0 +1,37 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: mysql2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  socket: /opt/lampp/var/mysql/mysql.sock
+  database: mooka-api/development
+  username: root
+  password:
+  host: 127.0.0.1
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  socket: /opt/lampp/var/mysql/mysql.sock
+  username: root
+  password:
+  database: mooka-api/test
+
+production:
+  <<: *default
+  adapter: pg
+  host: ec2-107-21-125-211.compute-1.amazonaws.com
+  url: postgres://iqgmcuuwynqcaw:2cc72c3fd67a6414d41d9031bfd68e84c27ac49f44c4a6544733b1021091823d@ec2-107-21-125-211.compute-1.amazonaws.com:5432/d9opofhg7pkuug
+  database: d9opofhg7pkuug
+  username: iqgmcuuwynqcaw
+  password: 2cc72c3fd67a6414d41d9031bfd68e84c27ac49f44c4a6544733b1021091823d
