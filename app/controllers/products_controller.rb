@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     if (!request.query_parameters[:kota].nil?)
       @products = @products.select{|x| x.umkm.kota == request.query_parameters[:kota]}
     end
-    render json: @products, include: :umkm
+    render json: {items: @products}, include: :umkm
 
   end
 
