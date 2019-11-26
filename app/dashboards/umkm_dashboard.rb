@@ -17,7 +17,7 @@ class UmkmDashboard < Administrate::BaseDashboard
       image: :standard
     ).freeze,
     alamat: Field::String,
-    siup: Field::String,
+    siup: Field::Carrierwave,
     logo: Field::String,
     kota: Field::String,
     created_at: Field::DateTime,
