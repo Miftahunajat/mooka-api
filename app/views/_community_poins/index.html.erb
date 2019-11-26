@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Community Poins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Community</th>
+      <th>Umkm</th>
+      <th>Point</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @_community_poins.each do |_community_poin| %>
+      <tr>
+        <td><%= _community_poin.community %></td>
+        <td><%= _community_poin.umkm %></td>
+        <td><%= _community_poin.point %></td>
+        <td><%= link_to 'Show', _community_poin %></td>
+        <td><%= link_to 'Edit', edit__community_poin_path(_community_poin) %></td>
+        <td><%= link_to 'Destroy', _community_poin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Community Poin', new__community_poin_path %>

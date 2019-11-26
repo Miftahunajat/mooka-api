@@ -1,0 +1,32 @@
+<%= form_with(model: _community_poin, local: true) do |form| %>
+  <% if _community_poin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(_community_poin.errors.count, "error") %> prohibited this _community_poin from being saved:</h2>
+
+      <ul>
+      <% _community_poin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :community_id %>
+    <%= form.text_field :community_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :umkm_id %>
+    <%= form.text_field :umkm_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :point %>
+    <%= form.text_field :point %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

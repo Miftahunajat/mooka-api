@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Community:</strong>
+  <%= @_community_poin.community %>
+</p>
+
+<p>
+  <strong>Umkm:</strong>
+  <%= @_community_poin.umkm %>
+</p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @_community_poin.point %>
+</p>
+
+<%= link_to 'Edit', edit__community_poin_path(@_community_poin) %> |
+<%= link_to 'Back', _community_poins_path %>

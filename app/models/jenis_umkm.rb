@@ -1,0 +1,2 @@
+class JenisUmkm < ApplicationRecord
+end

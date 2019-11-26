@@ -1,0 +1,2 @@
+class Pengiriman < ApplicationRecord
+end
