@@ -7,9 +7,9 @@ class UmkmsController < ApplicationController
     @umkms = Umkm.all
     if (!request.query_parameters[:kota].nil?)
       @umkms = @umkms.select{|x| x.kota == request.query_parameters[:kota]}
-      render json: @umkms
+      render json: { items: @umkms }
     else
-      render json: @umkms
+      render json: { items: @umkms }
     end
   end
 
