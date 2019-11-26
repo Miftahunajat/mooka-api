@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :jenis_umkms
+      resources :umkms
+      resources :communities
+      resources :notifications
+      resources :orders
+      resources :pengirimen
+      resources :products
+      resources :ulasans
+      resources :user_types
+      resources :users_favorites
+      resources :carts
+      # resources :community_umkms
+
+
+
+      root to: "carts#index"
+    end
   resources :pengirimen
   resources :_community_poins
   resources :community_umkms
