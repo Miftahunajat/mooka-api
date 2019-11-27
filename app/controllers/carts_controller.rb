@@ -5,10 +5,11 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.all
-    render json: @carts.select { |x| x.user_id == params[:user_id].to_i }, include: [
+    @carts = @carts.select { |x| x.user_id == params[:user_id].to_i }, include: [
       :product,
       :umkm
     ]
+    render json: { item: @carts }
   end
 
   # GET /carts/1
