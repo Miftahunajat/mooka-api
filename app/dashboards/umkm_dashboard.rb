@@ -53,6 +53,8 @@ class UmkmDashboard < Administrate::BaseDashboard
   kota
   created_at
   updated_at
+  phone
+  password
   ].freeze
 
   # FORM_ATTRIBUTES
