@@ -14,6 +14,14 @@ class CommunityUmkmsController < ApplicationController
   def show
   end
 
+  def add_point
+    @community_umkm = CommunityUmkm.where(
+      community_id: params[:community_id],
+      umkm_id: params[:umkm_id]
+    ).first.increment!(:point)
+    render json: @community_umkm
+  end
+
   # POST /community_umkms
   # POST /community_umkms.json
   def create

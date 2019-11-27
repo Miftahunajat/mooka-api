@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :products
   resources :umkms do
     resources :community_umkms
+    post 'community_umkms/add_point', to: 'community_umkms#add_point'
   end
   resources :communities
   resources :jenis_umkms
