@@ -5,11 +5,13 @@ class InboxesController < ApplicationController
   # GET /inboxes.json
   def index
     @inboxes = Inbox.all
+    render json: @inboxes.select { |x| x.umkm_id == params[:user_id].to_i }
   end
 
   # GET /inboxes/1
   # GET /inboxes/1.json
   def show
+    render json: @inbox
   end
 
   # POST /inboxes

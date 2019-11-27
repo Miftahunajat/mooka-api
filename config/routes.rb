@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :inboxes
   namespace :admin do
       resources :users
       resources :jenis_umkms
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :products
   resources :umkms do
+    resources :inboxes
     resources :community_umkms
     post 'community_umkms/add_point', to: 'community_umkms#add_point'
   end
