@@ -16,7 +16,7 @@ class UmkmsController < ApplicationController
   # GET /umkms/1
   # GET /umkms/1.json
   def show
-    render json: @umkm
+    render json: @umkm, include: {orders: :product}
   end
 
   # POST /umkms

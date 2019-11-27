@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   def index
     @carts = Cart.all
     @carts = @carts.select { |x| x.user_id == params[:user_id].to_i }
-    render json: { item: @carts }, include: [
+    render json: { items: @carts }, include: [
       :product,
       :umkm
     ]
@@ -61,7 +61,7 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    harga = Cart.joins(:product).where(user_id: 1).sum(:harga)
+    harga = Cart.joins(:product).where(user_id: params[:user_id]).sum(:harga)
     user = User.find_by(params[:user_id])
     donasi = 0
     pengiriman = 0
@@ -76,6 +76,19 @@ class CartsController < ApplicationController
     if (user.saldo < donasi + harga + pengiriman)
       render json: {status: 'Maaf uang anda tidak cukup'}, status: :forbidden
     else
+      @carts = Cart.select { |x| x.user_id == params[:user_id].to_i }
+      @carts.each do |cart|
+        for i in 1..cart.count do
+          Order.create!(
+            umkm_id: cart.umkm_id,
+            user_id: cart.user_id,
+            product_id: cart.product_id,
+            status: "Menunggu Konfirmasi"
+          )
+        end
+        cart.destroy
+      end
+
       user.increment!(:total_donasi, donasi)
       user.decrement!(:saldo, donasi + harga + pengiriman)
       render json: user
