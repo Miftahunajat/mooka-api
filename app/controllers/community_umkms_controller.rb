@@ -18,7 +18,7 @@ class CommunityUmkmsController < ApplicationController
     @community_umkm = CommunityUmkm.new(community_umkm_params)
 
     if @community_umkm.save
-      render :show, status: :created, location: @community_umkm
+      render json: @community_umkm
     else
       render json: @community_umkm.errors, status: :unprocessable_entity
     end
