@@ -69,7 +69,7 @@ class CartsController < ApplicationController
       donasi = params[:donasi].to_i
     end
     if (!params[:pengiriman_id].nil?)
-      pengirim = Pengiriman.find_by(params[:pengiriman_id])
+      pengirim = Pengiriman.find(params[:pengiriman_id])
       pengiriman = pengirim.to_i
     end
 
