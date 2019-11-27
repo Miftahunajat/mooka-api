@@ -24,6 +24,7 @@ class UmkmDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     phone: Field::String,
     password: Field::String
+    point: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -55,6 +56,7 @@ class UmkmDashboard < Administrate::BaseDashboard
   updated_at
   phone
   password
+  point
   ].freeze
 
   # FORM_ATTRIBUTES
