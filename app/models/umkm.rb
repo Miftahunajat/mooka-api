@@ -4,4 +4,6 @@ class Umkm < ApplicationRecord
   belongs_to :jenis_umkm
   has_many :orders
   has_many :products
+  has_many :community_umkms
+  has_many :communities, through: :community_umkms
 end

@@ -20,12 +20,14 @@ Rails.application.routes.draw do
     end
   resources :pengirimen
   resources :_community_poins
-  resources :community_umkms
+
   resources :ulasans
   resources :users_favorites
   resources :orders
   resources :products
-  resources :umkms
+  resources :umkms do
+    resources :community_umkms
+  end
   resources :communities
   resources :jenis_umkms
   resources :users do

@@ -48,6 +48,6 @@ class CommunityUmkmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def community_umkm_params
-      params.require(:community_umkm).permit(:community_id, :umkm_id, :is_admin)
+      params.permit(:community_id, :umkm_id, :is_admin)
     end
 end

@@ -62,7 +62,7 @@ class CartsController < ApplicationController
 
   def checkout
     harga = Cart.joins(:product).where(user_id: params[:user_id]).sum(:harga)
-    user = User.find_by(params[:user_id])
+    user = User.find(params[:user_id])
     donasi = 0
     pengiriman = 0
     if (!params[:donasi].nil?)
