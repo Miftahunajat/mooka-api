@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_051644) do
+ActiveRecord::Schema.define(version: 2019_11_27_022729) do
 
   create_table "_community_poins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "community_id"
@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_051644) do
     t.string "kota"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
+    t.string "password"
     t.index ["jenis_umkm_id"], name: "index_umkms_on_jenis_umkm_id"
   end
 

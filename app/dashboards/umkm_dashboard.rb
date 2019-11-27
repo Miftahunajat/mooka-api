@@ -22,6 +22,8 @@ class UmkmDashboard < Administrate::BaseDashboard
     kota: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    phone: Field::String,
+    password: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -66,6 +68,8 @@ class UmkmDashboard < Administrate::BaseDashboard
   siup
   logo
   kota
+  phone
+  password
   ].freeze
 
   # COLLECTION_FILTERS
