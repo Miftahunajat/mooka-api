@@ -5,7 +5,8 @@ class InboxesController < ApplicationController
   # GET /inboxes.json
   def index
     @inboxes = Inbox.all
-    render json: @inboxes.select { |x| x.umkm_id == params[:user_id].to_i }
+    @inboxes = @inboxes.select { |x| x.umkm_id == params[:user_id].to_i }
+    render json: {items: @inboxes}
   end
 
   # GET /inboxes/1

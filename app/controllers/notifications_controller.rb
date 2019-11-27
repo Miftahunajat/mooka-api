@@ -5,7 +5,8 @@ class NotificationsController < ApplicationController
   # GET /notifications.json
   def index
     @notifications = Notification.all
-    render json: @notifications.select { |x| x.user_id == params[:user_id].to_i }
+    @notifications = @notifications.select { |x| x.user_id == params[:user_id].to_i }
+    render json: {items: @notifications}
   end
 
   # GET /notifications/1
