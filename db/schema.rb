@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_133858) do
+ActiveRecord::Schema.define(version: 2019_11_27_164227) do
 
   create_table "_community_poins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "community_id"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2019_11_27_133858) do
     t.index ["umkm_id"], name: "index_community_umkms_on_umkm_id"
   end
 
+  create_table "inboxes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tipe"
+    t.string "judul"
+    t.string "text"
+    t.bigint "umkm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["umkm_id"], name: "index_inboxes_on_umkm_id"
+  end
+
   create_table "jenis_umkms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tipe_umkm"
     t.datetime "created_at", null: false
@@ -62,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_133858) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "type", precision: 10
+    t.decimal "tipe", precision: 10
     t.string "judul"
     t.string "text"
     t.bigint "user_id"
@@ -166,6 +176,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_133858) do
   add_foreign_key "carts", "users"
   add_foreign_key "community_umkms", "communities"
   add_foreign_key "community_umkms", "umkms"
+  add_foreign_key "inboxes", "umkms"
   add_foreign_key "notifications", "users"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "umkms"

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  resources :inboxes
   namespace :admin do
       resources :users
       resources :jenis_umkms
       resources :umkms
       resources :communities
       resources :notifications
+      resources :inboxes
       resources :orders
       resources :pengirimen
       resources :products

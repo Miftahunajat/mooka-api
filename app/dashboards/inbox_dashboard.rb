@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class NotificationDashboard < Administrate::BaseDashboard
+class InboxDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,9 +8,9 @@ class NotificationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
+    umkm: Field::BelongsTo,
     id: Field::Number,
-    tipe: Field::String.with_options(searchable: false),
+    tipe: Field::String,
     judul: Field::String,
     text: Field::String,
     created_at: Field::DateTime,
@@ -23,7 +23,7 @@ class NotificationDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  user
+  umkm
   id
   tipe
   judul
@@ -32,7 +32,7 @@ class NotificationDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  user
+  umkm
   id
   tipe
   judul
@@ -45,7 +45,7 @@ class NotificationDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  user
+  umkm
   tipe
   judul
   text
@@ -63,10 +63,10 @@ class NotificationDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how notifications are displayed
+  # Overwrite this method to customize how inboxes are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(notification)
-  #   "Notification ##{notification.id}"
+  # def display_resource(inbox)
+  #   "Inbox ##{inbox.id}"
   # end
 end
