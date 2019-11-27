@@ -23,7 +23,7 @@ class UmkmDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     phone: Field::String,
-    password: Field::String
+    password: Field::String,
     point: Field::String
   }.freeze
 
