@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   def index
     @carts = Cart.all
     @carts = @carts.select { |x| x.user_id == params[:user_id].to_i }
-    render json: { item: @carts }, , include: [
+    render json: { item: @carts }, include: [
       :product,
       :umkm
     ]
