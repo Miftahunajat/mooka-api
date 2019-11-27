@@ -5,11 +5,13 @@ class CommunitiesController < ApplicationController
   # GET /communities.json
   def index
     @communities = Community.all
+    render json: @communities
   end
 
   # GET /communities/1
   # GET /communities/1.json
   def show
+    render json: @community
   end
 
   # POST /communities
