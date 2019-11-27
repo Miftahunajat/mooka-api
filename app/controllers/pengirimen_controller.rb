@@ -5,7 +5,7 @@ class PengirimenController < ApplicationController
   # GET /pengirimen.json
   def index
     @pengirimen = Pengiriman.all
-    render json: @pengirimen
+    render json: {items: @pengirimen}
   end
 
   # GET /pengirimen/1
