@@ -5,6 +5,8 @@ class CommunityUmkmsController < ApplicationController
   # GET /community_umkms.json
   def index
     @community_umkms = CommunityUmkm.all
+    @community_umkms = @community_umkms.select{|x| x.umkm_id == params[:umkm_id].to_i}
+    render json: @community_umkms, include: :community
   end
 
   # GET /community_umkms/1
