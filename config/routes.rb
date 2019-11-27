@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :user_types
       resources :users_favorites
       resources :carts
-      # resources :community_umkms
+      resources :community_umkms
 
 
 
