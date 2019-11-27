@@ -70,7 +70,7 @@ class CartsController < ApplicationController
     end
     if (!params[:pengiriman_id].nil?)
       pengirim = Pengiriman.find(params[:pengiriman_id])
-      pengiriman = pengirim.to_i
+      pengiriman = pengirim.harga.to_i
     end
 
     if (user.saldo < donasi + harga + pengiriman)
