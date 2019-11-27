@@ -3,4 +3,5 @@ class Umkm < ApplicationRecord
   mount_uploader :siup, ImagesUploader
   belongs_to :jenis_umkm
   has_many :orders
+  has_many :products
 end
