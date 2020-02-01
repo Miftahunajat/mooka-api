@@ -11,7 +11,7 @@ class ProductDashboard < Administrate::BaseDashboard
     umkm: Field::BelongsTo,
     ulasans: Field::HasMany,
     id: Field::Number,
-    gambar: Field::Carrierwave,
+    gambar: Field::String,
     stock: Field::String.with_options(searchable: false),
     title: Field::String,
     harga: Field::String.with_options(searchable: false),
@@ -19,6 +19,7 @@ class ProductDashboard < Administrate::BaseDashboard
     buy_count: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    description: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -47,6 +48,7 @@ class ProductDashboard < Administrate::BaseDashboard
   buy_count
   created_at
   updated_at
+  description
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -61,6 +63,7 @@ class ProductDashboard < Administrate::BaseDashboard
   harga
   rating
   buy_count
+  description
   ].freeze
 
   # COLLECTION_FILTERS

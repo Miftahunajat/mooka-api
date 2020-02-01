@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_164227) do
+ActiveRecord::Schema.define(version: 2020_02_01_070339) do
 
   create_table "_community_poins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "community_id"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_164227) do
     t.decimal "buy_count", precision: 10, default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
     t.index ["umkm_id"], name: "index_products_on_umkm_id"
   end
 
