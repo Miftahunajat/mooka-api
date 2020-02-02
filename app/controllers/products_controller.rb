@@ -21,7 +21,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new()
+    @product.umkm_id = params[:umkm_id]
+    @product.stock = params[:stock]
+    @product.title = params[:title]
+    @product.harga = params[:harga]
+    @product.description = params[:description]
+    @product.gambar = params[:file]
 
     if @product.save
       render :show, status: :created, location: @product
