@@ -30,7 +30,8 @@ class ProductsController < ApplicationController
     @product.gambar = params[:file]
 
     if @product.save
-      render :show, status: :created, location: @product
+      render json: @product
+
     else
       render json: @product.errors, status: :unprocessable_entity
     end
