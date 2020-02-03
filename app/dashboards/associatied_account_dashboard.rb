@@ -10,8 +10,6 @@ class AssociatiedAccountDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     umkm: Field::BelongsTo,
     id: Field::Number,
-    username: Field::String,
-    password: Field::String,
     type: Field::String.with_options(searchable: false),
     type_name: Field::String,
     status: Field::String,
@@ -19,6 +17,7 @@ class AssociatiedAccountDashboard < Administrate::BaseDashboard
     otp: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    product_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,8 +28,8 @@ class AssociatiedAccountDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   umkm
   id
-  username
-  password
+  type
+  type_name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,8 +37,6 @@ class AssociatiedAccountDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   umkm
   id
-  username
-  password
   type
   type_name
   status
@@ -47,6 +44,7 @@ class AssociatiedAccountDashboard < Administrate::BaseDashboard
   otp
   created_at
   updated_at
+  product_id
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -54,13 +52,12 @@ class AssociatiedAccountDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   umkm
-  username
-  password
   type
   type_name
   status
   link
   otp
+  product_id
   ].freeze
 
   # COLLECTION_FILTERS

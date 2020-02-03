@@ -17,12 +17,16 @@ class AssociatiedAccountsController < ApplicationController
   # POST /associatied_accounts
   # POST /associatied_accounts.json
   def create
-    @associatied_account = AssociatiedAccount.new(associatied_account_params)
+    @ac = AssociatiedAccount.new()
+    @ac.umkm_id = params[:umkm_id]
 
-    if @associatied_account.save
-      render json: @associatied_account
+    @ac.product_id = params[:product_id]
+    @ac.type_name = params[:type_name]
+
+    if @ac.save
+      render json: @ac
     else
-      render json: @associatied_account.errors, status: :unprocessable_entity
+      render json: @ac.errors, status: :unprocessable_entity
     end
   end
 

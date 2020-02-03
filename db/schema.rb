@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_003651) do
+ActiveRecord::Schema.define(version: 2020_02_03_034836) do
 
   create_table "_community_poins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "community_id"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 2020_02_03_003651) do
   end
 
   create_table "associatied_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
     t.decimal "type", precision: 10
     t.string "type_name"
     t.string "status"
@@ -33,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_02_03_003651) do
     t.bigint "umkm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_associatied_accounts_on_product_id"
     t.index ["umkm_id"], name: "index_associatied_accounts_on_umkm_id"
   end
 
