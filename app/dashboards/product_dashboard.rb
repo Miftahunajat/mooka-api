@@ -20,6 +20,7 @@ class ProductDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     description: Field::String,
+    berat: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -49,6 +50,7 @@ class ProductDashboard < Administrate::BaseDashboard
   created_at
   updated_at
   description
+  berat
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -64,6 +66,7 @@ class ProductDashboard < Administrate::BaseDashboard
   rating
   buy_count
   description
+  berat
   ].freeze
 
   # COLLECTION_FILTERS
