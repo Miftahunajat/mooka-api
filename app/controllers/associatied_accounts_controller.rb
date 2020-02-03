@@ -34,8 +34,11 @@ class AssociatiedAccountsController < ApplicationController
   # PATCH/PUT /associatied_accountccounts/1
   # PATCH/PUT /associatied_accountts/1.json
   def update
-    if @associatied_account.update(associatied_accountm_params)
-      render :show, status: :ok, location: @associatied_account
+    link = params[:link]
+    status = params[:status]
+
+    if @associatied_account.update(link: link, status: status)
+      render json: @associatied_account
     else
       render json: @associatied_account.errors, status: :unprocessable_entity
     end
@@ -44,12 +47,12 @@ class AssociatiedAccountsController < ApplicationController
   # DELETE /associatied_accountccounts/1
   # DELETE /associatied_accountts/1.json
   def destroy
-    @associatied_accountt.destroy
+    @associatied_account.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_umkm
+    def set_associatied_account
       @associatied_account = AssociatiedAccount.find(params[:id])
     end
 
