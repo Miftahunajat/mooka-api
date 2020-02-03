@@ -25,20 +25,19 @@ class AssociatiedAccountsController < ApplicationController
     status = "REQUESTING"
     @product = Product.find(params[:product_id])
     @ac = AssociatiedAccount.find_or_create_by(umkm_id: umkm_id, product_id: product_id, type_name: type_name, status: "REQUESTING")
-
     if @ac
       if (type_name == 'SHOPEE')
-        resp = Faraday.new(url: 'http://localhost:8080').post('/shopee', {
+        resp = Faraday.new(url: 'https://sinatra-selenium.herokuapp.com').post('/shopee', {
           username: username, password: password,title: @product.title,
           description: @product.description, price: @product.harga, qty: @product.stock, image_link: @product.gambar.url, berat: @product.berat, ac_id: @ac.id
           })
         elsif (type_name == 'FACEBOOK')
-          resp = Faraday.new(url: 'http://localhost:8080').post('/facebook', {
+          resp = Faraday.new(url: 'https://sinatra-selenium.herokuapp.com').post('/facebook', {
           username: username, password: password,title: @product.title,
           description: @product.description, price: @product.harga, qty: @product.stock, image_link: @product.gambar.url, berat: @product.berat, ac_id: @ac.id
           })
         elsif (type_name == 'TOKPED')
-          resp = Faraday.new(url: 'http://localhost:8080').post('/tokped', {
+          resp = Faraday.new(url: 'https://sinatra-selenium.herokuapp.com').post('/tokped', {
           username: username, password: password,title: @product.title,
           description: @product.description, price: @product.harga, qty: @product.stock, image_link: @product.gambar.url, berat: @product.berat, ac_id: @ac.id
           })
@@ -56,7 +55,13 @@ class AssociatiedAccountsController < ApplicationController
     status = params[:status]
     otp = params[:otp]
 
-    if @associatied_account.update(link: link, status: status, otp: otp)
+    if !otp.nil?
+      res = @associatied_account.update(otp: otp)
+    else
+      res = @associatied_account.update(link: link, status: status, otp: otp)
+    end
+
+    if res
       render json: @associatied_account
     else
       render json: @associatied_account.errors, status: :unprocessable_entity
