@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_070339) do
+ActiveRecord::Schema.define(version: 2020_02_03_003651) do
 
   create_table "_community_poins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "community_id"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(version: 2020_02_01_070339) do
     t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index__community_poins_on_community_id"
     t.index ["umkm_id"], name: "index__community_poins_on_umkm_id"
+  end
+
+  create_table "associatied_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+    t.decimal "type", precision: 10
+    t.string "type_name"
+    t.string "status"
+    t.string "link"
+    t.string "otp"
+    t.bigint "umkm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["umkm_id"], name: "index_associatied_accounts_on_umkm_id"
   end
 
   create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -111,6 +125,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_070339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.decimal "berat", precision: 10, default: "0"
     t.index ["umkm_id"], name: "index_products_on_umkm_id"
   end
 
@@ -172,6 +187,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_070339) do
 
   add_foreign_key "_community_poins", "communities"
   add_foreign_key "_community_poins", "umkms"
+  add_foreign_key "associatied_accounts", "umkms"
   add_foreign_key "carts", "products"
   add_foreign_key "carts", "umkms"
   add_foreign_key "carts", "users"

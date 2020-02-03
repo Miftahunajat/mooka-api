@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :users_favorites
       resources :carts
       resources :community_umkms
+      resources :associatied_accounts
 
 
 
@@ -44,5 +45,6 @@ Rails.application.routes.draw do
     end
   end
   resources :user_types
+  resources :associatied_accounts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
