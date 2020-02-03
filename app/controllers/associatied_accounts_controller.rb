@@ -11,20 +11,38 @@ class AssociatiedAccountsController < ApplicationController
   # GET /associatied_accounts/1
   # GET /associatied_accounts/1.json
   def show
-    render json: @associatied_account, include: [{orders: {include: :product}}, :products]
+    render json: @associatied_account
   end
 
   # POST /associatied_accounts
   # POST /associatied_accounts.json
   def create
-    @ac = AssociatiedAccount.new()
-    @ac.umkm_id = params[:umkm_id]
+    umkm_id = params[:umkm_id]
+    username = params[:username]
+    password = params[:password]
+    product_id = params[:product_id]
+    type_name = params[:type_name]
+    status = "REQUESTING"
+    @product = Product.find(params[:product_id])
+    @ac = AssociatiedAccount.find_or_create_by(umkm_id: umkm_id, product_id: product_id, type_name: type_name, status: "REQUESTING")
 
-    @ac.product_id = params[:product_id]
-    @ac.type_name = params[:type_name]
-    @ac.status = "REQUESTING"
-
-    if @ac.save
+    if @ac
+      if (type_name == 'SHOPEE')
+        resp = Faraday.new(url: 'http://localhost:8080').post('/shopee', {
+          username: username, password: password,title: @product.title,
+          description: @product.description, price: @product.harga, qty: @product.stock, image_link: @product.gambar.url, berat: @product.berat, ac_id: @ac.id
+          })
+        elsif (type_name == 'FACEBOOK')
+          resp = Faraday.new(url: 'http://localhost:8080').post('/facebook', {
+          username: username, password: password,title: @product.title,
+          description: @product.description, price: @product.harga, qty: @product.stock, image_link: @product.gambar.url, berat: @product.berat, ac_id: @ac.id
+          })
+        elsif (type_name == 'TOKPED')
+          resp = Faraday.new(url: 'http://localhost:8080').post('/tokped', {
+          username: username, password: password,title: @product.title,
+          description: @product.description, price: @product.harga, qty: @product.stock, image_link: @product.gambar.url, berat: @product.berat, ac_id: @ac.id
+          })
+      end
       render json: @ac
     else
       render json: @ac.errors, status: :unprocessable_entity
@@ -36,8 +54,9 @@ class AssociatiedAccountsController < ApplicationController
   def update
     link = params[:link]
     status = params[:status]
+    otp = params[:otp]
 
-    if @associatied_account.update(link: link, status: status)
+    if @associatied_account.update(link: link, status: status, otp: otp)
       render json: @associatied_account
     else
       render json: @associatied_account.errors, status: :unprocessable_entity

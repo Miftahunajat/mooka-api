@@ -43,3 +43,4 @@ gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_b
 gem 'carrierwave',  '~> 1.3.1'
 gem 'administrate-field-carrierwave'
 gem 'cloudinary'
+gem 'faraday'
