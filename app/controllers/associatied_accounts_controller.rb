@@ -22,6 +22,7 @@ class AssociatiedAccountsController < ApplicationController
 
     @ac.product_id = params[:product_id]
     @ac.type_name = params[:type_name]
+    @ac.status = "REQUESTING"
 
     if @ac.save
       render json: @ac
