@@ -5,7 +5,7 @@ class AssociatiedAccountsController < ApplicationController
   # GET /associated_account.json
   def index
     @associatied_accounts = AssociatiedAccount.all
-    render json: @associated_accounts
+    render json: @associatied_accounts
   end
 
   # GET /associatied_accounts/1
