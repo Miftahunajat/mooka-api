@@ -46,5 +46,7 @@ Rails.application.routes.draw do
   end
   resources :user_types
   resources :associatied_accounts
+  post 'bri/cek_pembayaran', to: 'bri#cek_pembayaran'
+  post 'bri/buat_pembayaran', to: 'bri#buat_pembayaran'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
