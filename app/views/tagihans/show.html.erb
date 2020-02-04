@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Jumlah:</strong>
+  <%= @tagihan.jumlah %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tagihan.user %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @tagihan.status %>
+</p>
+
+<%= link_to 'Edit', edit_tagihan_path(@tagihan) %> |
+<%= link_to 'Back', tagihans_path %>

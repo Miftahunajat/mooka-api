@@ -35,8 +35,9 @@ Rails.application.routes.draw do
   resources :communities
   resources :jenis_umkms
   resources :users do
+    resources :tagihans
     resources :notifications
-    delete 'carts/clear', to: 'carts#remove_all'
+      delete 'carts/clear', to: 'carts#remove_all'
     post 'carts/checkout', to: 'carts#checkout'
     resources :carts, except: [:destroy] do
       collection do

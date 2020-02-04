@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_034836) do
+ActiveRecord::Schema.define(version: 2020_02_04_163342) do
 
   create_table "_community_poins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "community_id"
@@ -129,6 +129,15 @@ ActiveRecord::Schema.define(version: 2020_02_03_034836) do
     t.index ["umkm_id"], name: "index_products_on_umkm_id"
   end
 
+  create_table "tagihans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "jumlah"
+    t.bigint "user_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tagihans_on_user_id"
+  end
+
   create_table "ulasans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "rating_count", precision: 10
     t.bigint "user_id"
@@ -199,6 +208,7 @@ ActiveRecord::Schema.define(version: 2020_02_03_034836) do
   add_foreign_key "orders", "umkms"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "umkms"
+  add_foreign_key "tagihans", "users"
   add_foreign_key "ulasans", "products"
   add_foreign_key "ulasans", "users"
   add_foreign_key "umkms", "jenis_umkms"

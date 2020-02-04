@@ -77,6 +77,7 @@ class CartsController < ApplicationController
       render json: {status: 'Maaf uang anda tidak cukup'}, status: :forbidden
     else
       @carts = Cart.select { |x| x.user_id == params[:user_id].to_i }
+      tagihan = Tagihan.new(jumlah: harga, user: user, status: 'N')
       @carts.each do |cart|
         for i in 1..cart.count do
           Order.create!(
@@ -88,10 +89,10 @@ class CartsController < ApplicationController
         end
         cart.destroy
       end
-
+      tagihan.save
       user.increment!(:total_donasi, donasi)
       user.decrement!(:saldo, donasi + harga + pengiriman)
-      render json: user
+      render json: tagihan
     end
   end
 
