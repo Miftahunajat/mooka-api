@@ -4,6 +4,9 @@ class Bri
   def initialize
     @url = 'https://sandbox.partner.api.bri.co.id'
     @get_url = 'https://partner.api.bri.co.id'
+
+    @ID_KEY='ZuUyA2Ykz2pEaID8KMM7WIQKYI7La1sc'
+    @SECRET_KEY='4IBk0c3TNLK6ckaj'
   end
 
   def create_briva_endpoint(nama,  amount, custCode = '3456789200', keterangan = "")
@@ -58,7 +61,7 @@ class Bri
 
   def get_access_token
     url = '/oauth/client_credential/accesstoken?grant_type=client_credentials'
-    res = Faraday.post(@url + url, {client_id: ENV['ID_KEY'], client_secret: ENV['SECRET_KEY']})
+    res = Faraday.post(@url + url, {client_id: @ID_KEY, client_secret: @SECRET_KEY})
     JSON.parse(res.body)['access_token']
   end
 
@@ -73,7 +76,7 @@ class Bri
 
   def create_signature(payload)
     digest = OpenSSL::Digest.new('sha256')
-    key = ENV['SECRET_KEY']
+    key = @SECRET_KEY
     hexdigest = OpenSSL::HMAC.hexdigest(digest, key, payload)
     hex_to_base64_digest(hexdigest)
   end

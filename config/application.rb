@@ -15,6 +15,7 @@ module MookaApi
     config.generators.test_framework = nil
     config.template_engine = nil
     # config.cache_storage = :file
+    config.enable_dependency_loading = true
     config.autoload_paths << "#{Rails.root}/lib"
 
 
