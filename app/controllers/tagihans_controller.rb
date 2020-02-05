@@ -42,15 +42,11 @@ class TagihansController < ApplicationController
   # PATCH/PUT /tagihans/1
   # PATCH/PUT /tagihans/1.json
   def update
-    respond_to do |format|
-      if @tagihan.update(tagihan_params)
-        format.html { redirect_to @tagihan, notice: 'Tagihan was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tagihan }
+    if @tagihan.update(tagihan_params)
+        render json: @tagihan
       else
-        format.html { render :edit }
-        format.json { render json: @tagihan.errors, status: :unprocessable_entity }
+        render json: @tagihan.errors, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /tagihans/1
