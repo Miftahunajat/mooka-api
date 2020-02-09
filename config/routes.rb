@@ -15,8 +15,7 @@ Rails.application.routes.draw do
       resources :carts
       resources :community_umkms
       resources :associatied_accounts
-
-
+      resources :tagihans
 
       root to: "carts#index"
     end
