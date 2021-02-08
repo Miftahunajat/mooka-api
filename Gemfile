@@ -40,7 +40,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'rack-cors', '~> 0.2.9', require: 'rack/cors'
 gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_basic'
-gem 'carrierwave',  '~> 1.3.1'
+gem 'carrierwave',  '~> 1.3.2'
 gem 'administrate-field-carrierwave'
 gem 'cloudinary'
 gem 'faraday'
